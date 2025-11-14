@@ -20,10 +20,6 @@ export const MY_STACK = {
             icon: '/logo/js.png',
         },
         {
-            name: 'TypeScript',
-            icon: '/logo/ts.png',
-        },
-        {
             name: 'React',
             icon: '/logo/react.png',
         },
@@ -32,24 +28,12 @@ export const MY_STACK = {
             icon: '/logo/next.png',
         },
         {
-            name: 'Redux',
-            icon: '/logo/redux.png',
-        },
-        {
             name: 'Tailwind CSS',
             icon: '/logo/tailwind.png',
         },
         {
-            name: 'GSAP',
-            icon: '/logo/gsap.png',
-        },
-        {
             name: 'Framer Motion',
             icon: '/logo/framer-motion.png',
-        },
-        {
-            name: 'Sass',
-            icon: '/logo/sass.png',
         },
         {
             name: 'Bootstrap',
@@ -82,10 +66,6 @@ export const MY_STACK = {
         {
             name: 'MongoDB',
             icon: '/logo/mongodb.svg',
-        },
-        {
-            name: 'Prisma',
-            icon: '/logo/prisma.png',
         },
     ],
     tools: [

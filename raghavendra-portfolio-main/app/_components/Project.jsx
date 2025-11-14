@@ -86,16 +86,24 @@ const Project = ({ index, project, selectedProject, onMouseEnter }) => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div className="w-full overflow-hidden rounded-md mb-4">
-                <Image
-                    src={project.thumbnail}
-                    alt={project.title}
-                    width={800}
-                    height={500}
-                    className="w-full h-48 object-cover"
-                    loading="lazy"
-                />
-            </div>
+            {project.slug === 'epikcart' ? (
+                <div className="w-full overflow-hidden rounded-md mb-4">
+                    <Image
+                        src={project.thumbnail}
+                        alt={project.title}
+                        width={800}
+                        height={500}
+                        className="w-full h-48 object-cover"
+                        loading="lazy"
+                    />
+                </div>
+            ) : (
+                <div className="w-full rounded-md mb-4 h-48 flex items-center justify-center bg-background-light">
+                    <span className="text-lg font-anton text-foreground">
+                        {project.title}
+                    </span>
+                </div>
+            )}
 
             <div className="flex items-start gap-3">
                 <div className="font-anton text-sm text-muted-foreground mt-1">
@@ -105,6 +113,11 @@ const Project = ({ index, project, selectedProject, onMouseEnter }) => {
                     <h4 className="text-2xl font-anton mb-2 text-foreground">
                         {project.title}
                     </h4>
+                    {project.slug !== 'epikcart' && (
+                        <p className="text-sm text-muted-foreground mb-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            {project.description}
+                        </p>
+                    )}
                     <div className="mt-2 flex flex-wrap gap-2 text-muted-foreground text-xs">
                         {project.techStack.slice(0, 4).map((tech) => (
                             <span

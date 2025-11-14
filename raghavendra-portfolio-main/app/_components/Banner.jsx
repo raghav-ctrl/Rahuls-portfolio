@@ -2,6 +2,7 @@
 import ArrowAnimation from '@/components/ArrowAnimation';
 import Button from '@/components/Button';
 import { GENERAL_INFO } from '@/lib/data';
+import Typewriter from '@/components/Typewriter';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
@@ -33,6 +34,29 @@ const Banner = () => {
         { scope: containerRef },
     );
 
+    // initial title entrance animation
+    useGSAP(
+        () => {
+            const tl = gsap.timeline();
+            tl.from('.title-left', {
+                x: '-100%',
+                opacity: 0,
+                duration: 0.8,
+                ease: 'power2.out',
+            }).from(
+                '.title-right',
+                {
+                    x: '100%',
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power2.out',
+                },
+                '<',
+            );
+        },
+        { scope: containerRef },
+    );
+
     return (
         <section className="relative overflow-hidden" id="banner">
             <ArrowAnimation />
@@ -42,16 +66,17 @@ const Banner = () => {
             >
                 <div className="max-md:grow max-md:flex flex-col justify-center items-start max-w-[544px]">
                     <h1 className="banner-title slide-up-and-fade leading-[.95] text-6xl sm:text-[80px] font-anton">
-                        <span className="text-primary">FRONTEND</span>
-                        <br /> <span className="ml-4">DEVELOPER</span>
+                        <span className="text-primary title-left">FRONTEND</span>
+                        <br /> <span className="ml-4 title-right">DEVELOPER</span>
                     </h1>
                     <p className="banner-description slide-up-and-fade mt-6 text-lg text-muted-foreground">
-                        Hi! I&apos;m{' '}
-                        <span className="font-medium text-foreground">
-                            Raghavendra Rahul
-                        </span>
-                        . A recent ECM graduate (2025) passionate about Frontend
-                        Development, UI design, and AWS cloud services.
+                        Hi! I&apos;m <span className="font-medium text-foreground">Raghavendra Rahul</span>.
+                        <br />
+                        <Typewriter
+                            text="A recent ECM graduate (2025) passionate about Frontend Development, UI design, and AWS cloud services."
+                            speed={40}
+                            className="inline-block mt-2 text-foreground"
+                        />
                     </p>
                     <Button
                         as="link"
